@@ -204,7 +204,7 @@ class _SignUpScreenState extends State<signUpScreen> {
                                   duration: Duration(seconds: 3),
                                 ),
                               );
-                            };
+                            }
                           },
                           child: const Text(
                             'Registrarse',

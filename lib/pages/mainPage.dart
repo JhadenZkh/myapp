@@ -1,8 +1,13 @@
 import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:myapp/pages/models/book.dart';
 
-
+import 'home_screen.dart';
+import 'book_screen.dart';
+import 'book_add.dart';
+import 'star_screen.dart';
+import 'user_screen.dart';
 
 // ignore: camel_case_types
 class mainPage extends StatefulWidget {
@@ -14,25 +19,23 @@ class mainPage extends StatefulWidget {
 
 // ignore: camel_case_types
 class _mainPageState extends State<mainPage> {
-
   List imageList = [
     {
       'id': 1,
       'path':
-      'https://img.freepik.com/free-vector/sale-banner-with-product-description_1361-1333.jpg?w=2000'
+          'https://static.wikia.nocookie.net/esharrypotter/images/8/8d/Harry_Potter_y_el_Misterio_del_Pr%C3%ADncipe_Portada_Espa%C3%B1ol.PNG/revision/latest?cb=20151020170658'
     },
     {
       'id': 2,
       'path':
-      'https://static.vecteezy.com/system/resources/thumbnails/006/795/097/small/sale-banner-or-poster-with-realistic-podium-in-orange-and-blue-color-business-illustration-free-vector.jpg'
+          'https://static.vecteezy.com/system/resources/thumbnails/006/795/097/small/sale-banner-or-poster-with-realistic-podium-in-orange-and-blue-color-business-illustration-free-vector.jpg'
     },
     {
       'id': 3,
       'path':
-      'https://static.vecteezy.com/system/resources/previews/003/692/287/original/big-sale-discount-promotion-banner-template-with-blank-product-podium-scene-graphic-free-vector.jpg'
+          'https://static.vecteezy.com/system/resources/previews/003/692/287/original/big-sale-discount-promotion-banner-template-with-blank-product-podium-scene-graphic-free-vector.jpg'
     },
   ];
-
 
   final CarouselController carouselController = CarouselController();
   int currentIndex = 0;
@@ -50,7 +53,7 @@ class _mainPageState extends State<mainPage> {
         ),
         actions: const [
           Icon(
-            Icons.notifications_none,
+            Icons.search,
             color: Colors.black,
           ),
           SizedBox(
@@ -58,7 +61,7 @@ class _mainPageState extends State<mainPage> {
           )
         ],
         title: const Text(
-          'Slider And Bottom Bar',
+          'BookScore',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
@@ -70,33 +73,33 @@ class _mainPageState extends State<mainPage> {
                 items: imageList
                     .map(
                       (e) => Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.network(
-                            e['path'],
-                            fit: BoxFit.cover,
-                            width: double.infinity,
+                        fit: StackFit.expand,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.network(
+                                e['path'],
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                              ),
+                            ),
                           ),
-                        ),
+                          Positioned(
+                            bottom: 30,
+                            right: 95,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      Colors.blueAccent.withOpacity(0.3)),
+                              onPressed: () {},
+                              child: const Text('Ver libro'),
+                            ),
+                          ),
+                        ],
                       ),
-                      Positioned(
-                        bottom: 30,
-                        right: 95,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                              Colors.blueAccent.withOpacity(0.3)),
-                          onPressed: () {},
-                          child: const Text('Shop Now'),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
+                    )
                     .toList(),
                 carouselController: carouselController,
                 options: CarouselOptions(autoPlay: true),
@@ -128,7 +131,7 @@ class _mainPageState extends State<mainPage> {
               size: 30,
             ),
             Icon(
-              Icons.search,
+              Icons.book,
               color: Colors.black,
               size: 30,
             ),
@@ -138,7 +141,7 @@ class _mainPageState extends State<mainPage> {
               color: Colors.red,
             ),
             Icon(
-              Icons.chat,
+              Icons.star,
               color: Colors.black,
               size: 30,
             ),

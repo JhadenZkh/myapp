@@ -4,7 +4,6 @@ import 'package:page_transition/page_transition.dart';
 import 'package:myapp/pages/auth/signUpScreen.dart';
 
 import 'auth/loginScreen.dart';
-import 'auth/signUpScreen.dart';
 
 class welcomeScreen extends StatefulWidget {
   const welcomeScreen({super.key});
@@ -40,7 +39,7 @@ class _welcomeScreenState extends State<welcomeScreen> {
               Expanded(
                 flex: 0,
                 child: Text(
-                  'Logeate a nuestra pagina de libros',
+                  'Ingresa a nuestra pagina de libros!',
                   style: TextStyle(
                       color: Colors.black.withOpacity(0.5),
                       fontWeight: FontWeight.w300,

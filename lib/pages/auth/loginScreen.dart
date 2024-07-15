@@ -172,7 +172,8 @@ class _loginScreenState extends State<loginScreen> {
                                             BorderRadius.circular(10.0)),
                                     backgroundColor: isEmailCorrect == false
                                         ? Colors.red
-                                        : Colors.purple,
+                                        : const Color.fromARGB(
+                                            255, 255, 255, 255),
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 131, vertical: 20)
                                     // padding: EdgeInsets.only(
@@ -187,10 +188,11 @@ class _loginScreenState extends State<loginScreen> {
                                           content: Text('Analizando Datos')),
                                     );
                                   }
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) => loginScreen()));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const mainPage()));
                                 },
                                 child: const Text(
                                   'Ingresa a la pagina',
@@ -236,7 +238,13 @@ class _loginScreenState extends State<loginScreen> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const signUpScreen()));
+                        },
                         child: const Text(
                           'Crea una',
                           style: TextStyle(

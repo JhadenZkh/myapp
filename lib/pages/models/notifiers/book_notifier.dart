@@ -1,4 +1,4 @@
-import 'package:myapp/src/models/book.dart';
+import 'package:myapp/pages/models/book.dart';
 import 'package:flutter/widgets.dart';
 
 List<Book> initialBooks = [];

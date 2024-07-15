@@ -4,6 +4,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:myapp/pages/auth/signUpScreen.dart';
 
 import 'auth/loginScreen.dart';
+import 'auth/signUpScreen.dart';
 
 class welcomeScreen extends StatefulWidget {
   const welcomeScreen({super.key});

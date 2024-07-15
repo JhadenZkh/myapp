@@ -23,18 +23,14 @@ class _mainPageState extends State<mainPage> {
     {
       'id': 1,
       'path':
-          'https://static.wikia.nocookie.net/esharrypotter/images/8/8d/Harry_Potter_y_el_Misterio_del_Pr%C3%ADncipe_Portada_Espa%C3%B1ol.PNG/revision/latest?cb=20151020170658'
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV-PYZF5haIOsx_uSGK2EpXoV7_QtP8kawAw&s'
     },
     {
       'id': 2,
       'path':
-          'https://static.vecteezy.com/system/resources/thumbnails/006/795/097/small/sale-banner-or-poster-with-realistic-podium-in-orange-and-blue-color-business-illustration-free-vector.jpg'
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST2E_p3Vg9L80BWB_u0wtI0_P2Es_78q0vPR9hJmR-AGObneql'
     },
-    {
-      'id': 3,
-      'path':
-          'https://static.vecteezy.com/system/resources/previews/003/692/287/original/big-sale-discount-promotion-banner-template-with-blank-product-podium-scene-graphic-free-vector.jpg'
-    },
+    {'id': 3, 'path': 'https://m.media-amazon.com/images/I/51ID2Nit3mL.jpg'},
   ];
 
   final CarouselController carouselController = CarouselController();
@@ -82,6 +78,7 @@ class _mainPageState extends State<mainPage> {
                               child: Image.network(
                                 e['path'],
                                 fit: BoxFit.cover,
+                                height: 200,
                                 width: double.infinity,
                               ),
                             ),
@@ -102,19 +99,27 @@ class _mainPageState extends State<mainPage> {
                     )
                     .toList(),
                 carouselController: carouselController,
-                options: CarouselOptions(autoPlay: true),
+                options: CarouselOptions(
+                  autoPlay: true,
+                  onPageChanged: (index, reason) {
+                    int newIndex = index;
+                    setState(() {
+                      currentIndex = newIndex;
+                    });
+                  },
+                ),
               ),
-              // Positioned(
-              //   right: 150,
-              //   bottom: 30,
-              //   child: CarouselIndicator(
-              //     color: Colors.white.withOpacity(0.5),
-              //     cornerRadius: 50,
-              //     activeColor: Colors.red,
-              //     count: imageList.length,
-              //     index: currentIndex,
-              //   ),
-              // ),
+              Positioned(
+                right: 150,
+                bottom: 30,
+                child: CarouselIndicator(
+                  color: Colors.white.withOpacity(0.5),
+                  cornerRadius: 50,
+                  activeColor: Colors.red,
+                  count: imageList.length,
+                  index: currentIndex,
+                ),
+              ),
             ],
           )
         ],
@@ -122,33 +127,83 @@ class _mainPageState extends State<mainPage> {
       bottomNavigationBar: Container(
         height: 55,
         color: Colors.white,
-        child: const Row(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Icon(
-              Icons.home_filled,
-              color: Colors.black,
-              size: 30,
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
+              },
+              child: const Icon(
+                Icons.home_filled,
+                color: Colors.black,
+                size: 30,
+              ),
             ),
-            Icon(
-              Icons.book,
-              color: Colors.black,
-              size: 30,
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BookScreen(
+                      title: 'Default title', // replace with actual title
+                      author: 'Default author', // replace with actual author
+                      rating: '4.5/5', // replace with actual rating
+                      editorial:
+                          'Default editorial', // replace with actual editorial
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:1589558266.
+                    ),
+                  ),
+                );
+              },
+              child: const Icon(
+                Icons.book,
+                color: Colors.black,
+                size: 30,
+              ),
             ),
-            Icon(
-              Icons.add_circle_outline,
-              size: 55,
-              color: Colors.red,
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const BookAdd()),
+                );
+              },
+              child: const Icon(
+                Icons.add_circle_outline,
+                size: 55,
+                color: Colors.red,
+              ),
             ),
-            Icon(
-              Icons.star,
-              color: Colors.black,
-              size: 30,
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const RatingsScreen()),
+                );
+              },
+              child: const Icon(
+                Icons.star,
+                color: Colors.black,
+                size: 30,
+              ),
             ),
-            Icon(
-              Icons.supervised_user_circle_sharp,
-              color: Colors.black,
-              size: 30,
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const UserScreen()),
+                );
+              },
+              child: const Icon(
+                Icons.supervised_user_circle_sharp,
+                color: Colors.black,
+                size: 30,
+              ),
             ),
           ],
         ),

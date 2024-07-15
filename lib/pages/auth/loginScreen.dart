@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/pages/auth/signUpScreen.dart';
+import 'package:myapp/pages/mainPage.dart';
 import 'package:validators/validators.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:myapp/pages/welcomePage.dart';
 
 // ignore: camel_case_types
 class loginScreen extends StatefulWidget {

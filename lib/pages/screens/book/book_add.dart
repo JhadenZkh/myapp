@@ -1,7 +1,7 @@
-import 'package:myapp/pages/models/book.dart';
-import 'package:myapp/pages/models/notifiers/book_notifier.dart';
-import 'package:myapp/pages/widgets/buttons/confirm_button.dart';
-import 'package:myapp/pages/widgets/inputs/book_text_form_field.dart';
+import 'package:myapp/models/book.dart';
+import 'package:myapp/models/notifiers/book_notifier.dart';
+import 'package:myapp/widgets/buttons/confirm_button.dart';
+import 'package:myapp/widgets/inputs/book_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

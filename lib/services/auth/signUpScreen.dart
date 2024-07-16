@@ -1,6 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/services/auth/auth_services.dart';
 import 'package:validators/validators.dart';
 
 class signUpScreen extends StatefulWidget {
@@ -10,11 +12,43 @@ class signUpScreen extends StatefulWidget {
   State<signUpScreen> createState() => _SignUpScreenState();
 }
 
+
+
 class _SignUpScreenState extends State<signUpScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+
+void register() async {
+  final _authService = AuthService();
+void _showErrorDialog(String message) {
+    if (!mounted) return;  // Asegúrate de que el widget está montado
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Error'),
+        content: Text(message),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+  try {
+    await _authService.signUpWithEmailPassword(
+      _emailController.text,
+      _passwordController.text,
+    );
+  } catch (e) {
+    _showErrorDialog(e.toString());
+  }
+}
   bool _isEmailCorrect = false;
   final _formKey = GlobalKey<FormState>();
 
@@ -187,9 +221,8 @@ class _SignUpScreenState extends State<signUpScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
-                            backgroundColor: _isEmailCorrect
-                                ? Colors.purple
-                                : Colors.red,
+                            backgroundColor:
+                                _isEmailCorrect ? Colors.purple : Colors.red,
                             padding: const EdgeInsets.symmetric(
                               horizontal: 131,
                               vertical: 20,
@@ -221,5 +254,5 @@ class _SignUpScreenState extends State<signUpScreen> {
         ),
       ),
     );
-    }
   }
+}

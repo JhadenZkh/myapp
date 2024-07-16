@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:myapp/pages/auth/signUpScreen.dart';
+import 'package:myapp/services/auth/signUpScreen.dart';
 
-import 'auth/loginScreen.dart';
-import 'auth/signUpScreen.dart';
+import '../services/auth/loginScreen.dart';
+import '../services/auth/signUpScreen.dart';
 
 class welcomeScreen extends StatefulWidget {
   const welcomeScreen({super.key});
